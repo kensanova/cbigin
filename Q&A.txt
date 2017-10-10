@@ -1,0 +1,12 @@
+#######################################
+# How to keep the console window open #
+#######################################
+
+1. Project > Properties > Configuration Properties > Linker > System.
+
+2. For the "Subsystem" property,
+    click the drop-down box and choose "Console (/SUBSYSTEM:CONSOLE)"
+    
+3. Click Apply, then click OK.
+
+4. CTRL-F5, not F5.
