@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-typedef enum {false, true} bool;
-
 void displayMenu() {
   printf("\n>>> Game of Concentration <<<\n");
   printf("\t1. Easy (remember 3 numbers in 5 seconds)\n");
@@ -12,12 +10,10 @@ void displayMenu() {
   printf("\t4. Quit\n\n");
 }
 
-char chooseMenu() {
-  char choice = '\0';
+void chooseMenu(char *cChoice) {
   
   printf("\t\tWhat would you like to do? ");
-  scanf("%c", &choice);
-  return choice;
+  scanf("%c", cChoice);
 }
 
 void generateRndNum(int *iNum) {
@@ -73,11 +69,9 @@ void checkAnswers(int num, int *iNum, int *iAns) {
         && iNum[1] == iAns[1]
         && iNum[2] == iAns[2]) {
         printf("\nCongratulations!");
-        exit(0);
       } else {
         printf("\nSorry, correct numbers were %d %d %d\n", \
           iNum[0], iNum[1], iNum[2]);
-        exit(0);
       }
       break;
       
@@ -101,7 +95,7 @@ int main() {
   
   char cChoice = '\0';
   int iNum[5];
-  int iAns[5] = {0, 0, 0, 0, 0};
+  int iAns[5] = {0};
   
   int i = 0;
   srand(time(NULL));
@@ -109,7 +103,7 @@ int main() {
 /* Display the menu */
   displayMenu();
 /* Get the user's choice */
-  cChoice = chooseMenu();
+  chooseMenu(&cChoice);
 /* Generate five random numbers */
   generateRndNum(&iNum[0]);
 /* Display numbers */
@@ -138,7 +132,6 @@ int main() {
     
     case '4':
       printf("\nGoodbye!");
-      exit(0);
   }
 
   return 0;
